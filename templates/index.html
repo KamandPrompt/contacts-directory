@@ -1,203 +1,232 @@
 <DOCTYPE html>
-<head>
-<title> Contacts </title>
-<style>
-	 /* The side navigation menu */
-.sidenav{
-    height: 100%; /* 100% Full-height */
-    width: 20%; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 0;
-    left: 0;
-    background-color: #111; /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 5px; /* Place content 60px from the top */
-    /*transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-}
+    <html>
 
-/* The navigation menu links */
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: white;
-    display: block;
-    /*transition: 0.3s*/
-}
+    <head>
+        <title> Contacts </title>
+        <style>
+        /* The side navigation menu */
+        
+        .sidenav {
+            height: 100%;
+            /* 100% Full-height */
+            width: 20%;
+            /* 0 width - change this with JavaScript */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Stay on top */
+            top: 0;
+            left: 0;
+            background-color: #111;
+            /* Black*/
+            overflow-x: hidden;
+            /* Disable horizontal scroll */
+            padding-top: 5px;
+            /* Place content 60px from the top */
+            /*transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+        }
+        /* The navigation menu links */
+        
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: white;
+            display: block;
+            /*transition: 0.3s*/
+        }
+        /* When you mouse over the navigation links, change their color */
+        
+        .sidenav a:hover,
+        .offcanvas a:focus {
+            color: #818181;
+        }
+        /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+        
+        @media screen and (max-height: 450px) {
+            .sidenav {
+                padding-top: 15px;
+            }
+            .sidenav a {
+                font-size: 18px;
+            }
+        }
+        /* Dropdown Button */
+        
+        .dropbtn {
+            width: 300%;
+            background-color: #111;
+            color: white;
+            padding: 30px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+        }
+        /* The container <div> - needed to position the dropdown content */
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        /* Dropdown Content (Hidden by Default) */
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #818181;
+            min-width: 20%;
+            box-shadow: 0px 8px 16px 0px rgba(17, 17, 17, 0.2);
+            ;
+            z-index: 1;
+        }
+        /* Links inside the dropdown */
+        
+        .dropdown-content a {
+            color: white;
+            padding: 10px 10px;
+            text-decoration: none;
+            display: block;
+            font-size: 18px;
+        }
+        /* Change color of dropdown links on hover */
+        
+        .dropdown-content a:hover {
+            background-color: #f1f1f1
+        }
+        /* Show the dropdown menu on hover */
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+            width: 300%;
+            text-align: left;
+        }
+        /* Change the background color of the dropdown button when the dropdown content is shown */
+        
+        .dropdown:hover .dropbtn {
+            background-color: #818181;
+        }
+        
+        .page {
+            height: 100%;
+            /* 100% Full-height */
+            width: 80%;
+            /* 0 width - change this with JavaScript */
+            margin-left: 20%;
+            z-index: 1;
+            /* Stay on top */
+            top: 0;
+            left: 0;
+            background-color: #111;
+            /* Black*/
+            overflow-x: hidden;
+            /* Disable horizontal scroll */
+            padding-top: 0px;
+            /* Place content 60px from the top */
+            /*transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+        }
+        
+        .page h1 {
+            text-align: center;
+            font-size: 40px;
+            color: white;
+            padding-top: 20px;
+        }
+        
+        .page h3 {
+            text-align: center;
+            font-size: 30px;
+            color: white;
+            position: relative;
+            -webkit-animation: mymove 3s;
+            /* Safari 4.0 - 8.0 */
+            -webkit-animation-fill-mode: forwards;
+            /* Safari 4.0 - 8.0 */
+            animation: mymove 3s;
+            animation-fill-mode: forwards;
+        }
+        /* Safari 4.0 - 8.0 */
+        
+        @-webkit-keyframes mymove {
+            from {
+                top: -20px;
+            }
+            to {
+                top: 100px;
+            }
+        }
+        
+        @keyframes mymove {
+            from {
+                top: -20px;
+            }
+            to {
+                top: 20px;
+            }
+        }
+        
+        input[type=text] {
+            margin-left: 39%;
+            padding-bottom: 100px;
+            width: 250px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 2px;
+            font-size: 20px;
+            background-color: #111;
+            color: white;
+            background-image: url('../public/img/searchicon1.png');
+            background-size: 45px 45px;
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            padding: 20px 20px 20px 60px;
+            -webkit-transition: width 0.4s ease-in-out;
+            transition: width 0.4s ease-in-out;
+        }
+        
+        input[type=text]:focus {
+            width: 100%;
+        }
+        </style>
+    </head>
 
-/* When you mouse over the navigation links, change their color */
-.sidenav a:hover, .offcanvas a:focus{
-    color: #818181;
-}
+    <body>
+        <div id="mySidenav" class="sidenav">
+            <a href="insite.iitmandi.ac.in"><img src="../public/img/images.png" height="150" width="230" style="margin-left: -15px;" /></a>
+            <div class="Dropdown">
+                <button class="dropbtn">B.Tech Batch</button>
+                <div class="Dropdown-content">
+                    <a href="#">B.Tech 2016</a>
+                    <a href="#">B.Tech 2015</a>
+                    <a href="#">B.Tech 2014</a>
+                    <a href="#">B.Tech 2013</a>
+                </div>
+            </div>
+            <div class="Dropdown">
+                <button class="dropbtn">Post Graduate</button>
+                <div class="Dropdown-content">
+                    <a href="#">MS</a>
+                    <a href="#">M.Sc</a>
+                    <a href="#">M.Tech</a>
+                </div>
+            </div>
+            <div class="Dropdown">
+                <button class="dropbtn">Ph.D</button>
+                <div class="Dropdown-content">
+                    <a href="#">Ph.D</a>
+                    <a href="#">Int Ph.D</a>
+                </div>
+            </div>
+        </div>
+        <div id="myPage" class="page">
+            <h1>Indian Institute Of Technology Mandi</h1>
+            <h3>Contact Directory</h3>
+            <input type="text" name="search" id="search" placeholder="Search Contact">
+            <div id="results" style="color: white">
+            </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="../public/js/search.js"></script>
+    </body>
 
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-}
-
-/* Dropdown Button */
-.dropbtn {
-	width: 300%;
-    background-color: #111;
-    color: white;
-    padding: 30px;
-    font-size: 18px;
-    border: none;
-    cursor: pointer;
-    text-align: left;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #818181;
-    min-width: 20%;
-    box-shadow: 0px 8px 16px 0px rgba(17, 17, 17,0.2);;
-    z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-    color: white;
-    padding: 10px 10px;
-    text-decoration: none;
-    display: block;
-    font-size: 18px;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #f1f1f1}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-    display: block;
-    width: 300%;
-    text-align: left;
-}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
-    background-color: #818181;
-}
-
-.page {
-	height: 100%; /* 100% Full-height */
-    width: 80%; /* 0 width - change this with JavaScript */
-    margin-left: 20%;
-    z-index: 1; /* Stay on top */
-    top: 0;
-    left: 0;
-    background-color: #111; /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 0px; /* Place content 60px from the top */
-    /*transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-}
-
-.page h1{
-	text-align: center;
-	font-size: 40px;
-	color: white;
-	padding-top: 20px;
-}
-
-.page h3{
-	text-align: center;
-	font-size: 30px;
-	color: white;
-	 position: relative;
-    -webkit-animation: mymove 3s;  /* Safari 4.0 - 8.0 */
-    -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
-    animation: mymove 3s;
-    animation-fill-mode: forwards;
-}
-
-/* Safari 4.0 - 8.0 */
-@-webkit-keyframes mymove {
-    from {top: -20px;}
-    to {top: 100px;}
-}
-
-@keyframes mymove {
-    from {top: -20px;}
-    to {top: 20px;}
-}
-
-input[type=text] {
-	margin-left: 39%;
-	padding-bottom: 100px;
-    width: 250px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 2px;
-    font-size: 20px;
-    background-color: #111;
-    color: white;
-    background-image: url('../public/img/searchicon1.png');
-    background-size : 45px 45px;
-    background-position: 10px 10px;		 
-    background-repeat: no-repeat;
-    padding: 20px 20px 20px 60px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-}
-
-input[type=text]:focus {
-    width: 100%;
-}
-
-</style>
-</head>
-
-<body>
-	 <div id="mySidenav" class="sidenav">
-
-	<a href="insite.iitmandi.ac.in"><img src="../public/img/images.png" height= "150" width= "230" style="margin-left: -15px;" /></a>  
-
-  <div class="Dropdown">
-       <button class="dropbtn">B.Tech Batch</button>
-      <div class="Dropdown-content">
-       <a href="#">B.Tech 2016</a>
-       <a href="#">B.Tech 2015</a>
-       <a href="#">B.Tech 2014</a>
-       <a href="#">B.Tech 2013</a>
-      </div>
-    </div>
-  
-  <div class="Dropdown">
-    <button class="dropbtn">Post Graduate</button>
-    <div class="Dropdown-content">
-      <a href="#">MS</a>
-      <a href="#">M.Sc</a>
-      <a href="#">M.Tech</a>
-    </div>
-  </div>
-
-  <div class="Dropdown">
-    <button class="dropbtn">Ph.D</button>
-    <div class="Dropdown-content">
-      <a href="#">Ph.D</a>
-      <a href="#">Int Ph.D</a>
-    </div>
-  </div>
-  </div>
-  	
-  <div id="myPage" class="page">
-
-  		<h1>Indian Institute Of Technology Mandi</h1>
-
-  		<h3>Contact Directory</h3>
-
-  		<input type="text" name="search" id="search" placeholder="Search Contact">
-
-  </div>
-
-</body>
+    </html>
