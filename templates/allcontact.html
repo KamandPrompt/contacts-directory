@@ -1,6 +1,7 @@
 <DOCTYPE html>
 <head>
-<title> Contacts </title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> All Contacts </title>
 <style>
 	/* The side navigation menu */
 .sidenav{
@@ -31,11 +32,7 @@
 	 color: #818181;
 }
 
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-	 .sidenav {padding-top: 15px;}
-	 .sidenav a {font-size: 18px;}
-}
+
 
 /* Dropdown Button */
 .dropbtn {
@@ -97,6 +94,8 @@
 	 z-index: 1; /* Stay on top */
 	 top: 0;
 	 left: 0;
+	 padding: 1px 16px;
+	 background:url('http://i.stack.imgur.com/tQTRW.gif') repeat;
 	 background-color: #fff; /* Black*/
 	 overflow-x: hidden; /* Disable horizontal scroll */
 	 padding-top: 0px; /* Place content 60px from the top */
@@ -108,6 +107,7 @@
   font-size: 40px;
   color: #333;
   padding-top: 20px;
+      font-family: "Avenir Next Regular",sans-serif;
 }
 
 .page h3{
@@ -119,6 +119,7 @@
 	 -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
 	 animation: mymove 3s;
 	 animation-fill-mode: forwards;
+	     font-family: "Avenir Next Regular",sans-serif;
 }
 
 /* Safari 4.0 - 8.0 */
@@ -134,8 +135,8 @@
 
 input[type=text] {
 	 width: 250px;
-  margin-left: 39%;
-  padding-bottom: 100px;
+     margin-left: 39%;
+     padding-bottom: 100px;
 	 box-sizing: border-box;
 	 border: 2px solid #ccc;
 	 border-radius: 2px;
@@ -160,7 +161,7 @@ input[type=text]:focus {
 table{
 		border-collapse: collapse;
 		width: 80%;
-		margin-top: 40px;
+		margin-top: 4%;
 	}
 
 	th,td {
@@ -174,13 +175,35 @@ table{
 		background-color: #111;
 		color: white;
 	}
+
+@media screen and (max-width: 800px) {
+	.sidenav {
+        width: 100%;
+        height: auto;
+        position: relative;
+        overflow: visible;
+    }
+
+    .sidenav .Dropdown {
+        text-align: center;
+        float: none;
+    }
+    .dropbtn{
+	 padding: 15px 12vw;
+    }
+    #logo{
+    	display: none;
+    }
+    div.page {margin-left: 0;}
+}
+
 </style>
 </head>
 
 <body>
 	<div id="mySidenav" class="sidenav">
 
-  <a href="insite.iitmandi.ac.in"><img src="../public/img/images.png" height= "150" width= "230" style="margin-left: -15px;" /></a>  
+  <a id="logo" href="insite.iitmandi.ac.in"><img src="../public/img/iitmandilogo.png" height= "150" width= "230" style="margin-left: -15px;" /></a>  
 
   <div class="Dropdown">
 		 <button class="dropbtn">B.Tech Batch</button>

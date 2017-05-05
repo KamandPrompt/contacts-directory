@@ -1,6 +1,6 @@
 <DOCTYPE html>
 <head>
-<title> Home Page </title>
+<title> Individual Contact </title>
 <style>
 	/* The side navigation menu */
 .sidenav{
@@ -10,7 +10,7 @@
 	 z-index: 1; /* Stay on top */
 	 top: 0;
 	 left: 0;
-	 background-color: 	white; /* Black*/
+	 background-color: #D3D3D3; /* Black*/
 	 overflow-x: hidden; /* Disable horizontal scroll */
 	 padding-top: 5px; /* Place content 60px from the top */
 	 /*transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
@@ -42,7 +42,6 @@
   width: 300%;
 	 background-color: #d3d3d3;
 	 color: #000;
-	 font-family: 'Advent Pro', sans-serif;
 	 padding: 15px 30px;
 	 font-size: 18px;
 	 border: none;
@@ -61,7 +60,6 @@
 .dropdown-content {
 	 display: none;
 	 position: absolute;
-	 font-family: 'Advent Pro', sans-serif;
 	 background-color: #818181;
 	 min-width: 20%;
 	 box-shadow: 0px 8px 16px 0px rgba(17, 17, 17,0.2);;
@@ -75,7 +73,6 @@
 	 text-decoration: none;
 	 display: block;
 	 font-size: 18px;
-	 font-family: 'Advent Pro', sans-serif;
 }
 
 /* Change color of dropdown links on hover */
@@ -94,7 +91,7 @@
 }
 
 .page {
- 	 height: 100%; /* 100% Full-height */
+  height: 100%; /* 100% Full-height */
 	 width: 80%; /* 0 width - change this with JavaScript */
 	 margin-left: 20%;
 	 z-index: 1; /* Stay on top */
@@ -104,9 +101,6 @@
 	 overflow-x: hidden; /* Disable horizontal scroll */
 	 padding-top: 0px; /* Place content 60px from the top */
 	 /*transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-	 background-image: url("../public/img/bg.png");
-	 background-repeat: no-repeat;
-	 background-size: 1200px 700px;
 }
 
 .page h1{
@@ -114,14 +108,12 @@
   font-size: 40px;
   color: #333;
   padding-top: 20px;
-  font-family: 'Advent Pro', sans-serif;
 }
 
 .page h3{
   text-align: center;
   font-size: 30px;
   color: #333;
-  font-family: 'Advent Pro', sans-serif;
 	position: relative;
 	 -webkit-animation: mymove 3s;  /* Safari 4.0 - 8.0 */
 	 -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
@@ -143,7 +135,6 @@
 input[type=text] {
 	 width: 250px;
      margin-left: 39%;
-     margin-top: 10%;
      padding-bottom: 100px;
 	 box-sizing: border-box;
 	 border: 2px solid #ccc;
@@ -166,50 +157,27 @@ input[type=text]:focus {
 	 width: 60%;
 }
 
-table{
-		border-collapse: collapse;
-		width: 80%;
-		margin-top: 4%;
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 3%;
 	}
 
-	th,td {
-		text-align: left;
-		padding: 20px;
+	th, td {
+    text-align: left;
+    padding: 8px;
+    font-size: 20px;
 	}
 
 	tr:nth-child(even){background-color: #f2f2f2}
-
-	th{
-		background-color: #111;
-		color: white;
-	}
-	@media screen and (max-width: 800px) {
-	.sidenav {
-        width: 100%;
-        height: auto;
-        position: relative;
-        overflow: visible;
-    }
-
-    .sidenav .Dropdown {
-        text-align: center;
-        float: none;
-    }
-    .dropbtn{
-	 padding: 15px 12vw;
-    }
-    #logo{
-    	display: none;
-    }
-    div.page {margin-left: 0;}
-}
 </style>
 </head>
 
 <body>
 	<div id="mySidenav" class="sidenav">
 
-  <a id="logo" href="insite.iitmandi.ac.in"><img src="../public/img/iitmandilogo.png" height= "150" width= "230" style="margin-left: -15px;" /></a>  
+  <a href="insite.iitmandi.ac.in"><img src="../public/img/iitmandilogo.png" height= "150" width= "230" style="margin-left: -15px;" /></a>  
 
   <div class="Dropdown">
 		 <button class="dropbtn">B.Tech Batch</button>
@@ -248,28 +216,52 @@ table{
 		<input type="text" name="search" id="search" placeholder="Search Contact" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Contact'">
 
 		<table>
-		<tr>
-			<th>Roll No.</th>
-			<th>Name</th>
-			<th>Branch</th>
-			<th>Hostel</th>
-			<th>Room No.</th>
-			<th>Personal Contact</th>
-			<th>Emergency Contact Name</th>
-			<th>Emergency Contact</th>
-		</tr>
+	<tr>
+    	<td>Roll No : </td>
+    	<td>B16038</td>
+    </tr>
 
-		<tr>
-			<td>B16038</td>
-			<td>Sylvia</td>
-			<td>Computer Sceince and Engineering</td>
-			<td>B4 Chandertaal</td>
-			<td>001</td>
-			<td>7807105329</td>
-			<td>Mr. Rajiv Mittal</td>
-			<td>9416220759</td>
-		</tr>
-		</table>
+	<tr>
+    	<td>Name : </td>
+    	<td>Sylvia Mittal</td>
+    </tr>
+
+  	<tr>
+  	  	<td>Branch</td>
+  	  	<td>Computer Science and Engineering</td>
+   	</tr>
+  	
+  	<tr>
+    	<td>Hostel : </td>
+    	<td>Chandertaal B4</td>
+    </tr>
+
+    <tr>
+    	<td>Room No. : </td>
+    	<td>001</td>
+    </tr>
+
+  	<tr>
+    	<td>E-mail : </td>
+    	<td>b16038@students.iitmadi.ac.in</td>
+    </tr>
+
+  	<tr>
+    	<td>Personal Contact : </td>
+    	<td>7807105329</td>
+    </tr>
+
+
+	<tr>
+    	<td>Emergency Contact : </td>
+    	<td>9416220759</td>
+    </tr>
+
+  	<tr>
+  	  	<td>Emergency Contact Name :</td>
+  	  	<td>Mr. Rajiv Mittal</td>
+   	</tr>
+   	</table>
 </div>
 
 </body>
