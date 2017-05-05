@@ -1,7 +1,7 @@
 <DOCTYPE html>
 <html>
     <head>
-        <title> Home Page </title>
+        <title> Contacts - Int. PHD</title>
         <style>
         /* The side navigation menu */
         
@@ -16,7 +16,7 @@
             /* Stay on top */
             top: 0;
             left: 0;
-            background-color: white;
+            background-color: #D3D3D3;
             /* Black*/
             overflow-x: hidden;
             /* Disable horizontal scroll */
@@ -56,7 +56,6 @@
             width: 300%;
             background-color: #d3d3d3;
             color: #000;
-            font-family: 'Advent Pro', sans-serif;
             padding: 15px 30px;
             font-size: 18px;
             border: none;
@@ -75,7 +74,6 @@
         .dropdown-content {
             display: none;
             position: absolute;
-            font-family: 'Advent Pro', sans-serif;
             background-color: #818181;
             min-width: 20%;
             box-shadow: 0px 8px 16px 0px rgba(17, 17, 17, 0.2);
@@ -90,7 +88,6 @@
             text-decoration: none;
             display: block;
             font-size: 18px;
-            font-family: 'Advent Pro', sans-serif;
         }
         /* Change color of dropdown links on hover */
         
@@ -127,9 +124,6 @@
             padding-top: 0px;
             /* Place content 60px from the top */
             /*transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-            background-image: url("../public/img/bg.png");
-            background-repeat: no-repeat;
-            background-size: 1200px 700px;
         }
         
         .page h1 {
@@ -137,14 +131,12 @@
             font-size: 40px;
             color: #333;
             padding-top: 20px;
-            font-family: 'Advent Pro', sans-serif;
         }
         
         .page h3 {
             text-align: center;
             font-size: 30px;
             color: #333;
-            font-family: 'Advent Pro', sans-serif;
             position: relative;
             -webkit-animation: mymove 3s;
             /* Safari 4.0 - 8.0 */
@@ -176,7 +168,6 @@
         input[type=text] {
             width: 250px;
             margin-left: 39%;
-            margin-top: 10%;
             padding-bottom: 100px;
             box-sizing: border-box;
             border: 2px solid #ccc;
@@ -202,7 +193,7 @@
         table {
             border-collapse: collapse;
             width: 80%;
-            margin-top: 4%;
+            margin-top: 40px;
         }
         
         th,
@@ -219,32 +210,12 @@
             background-color: #111;
             color: white;
         }
-        	@media screen and (max-width: 800px) {
-	.sidenav {
-        width: 100%;
-        height: auto;
-        position: relative;
-        overflow: visible;
-    }
-
-    .sidenav .Dropdown {
-        text-align: center;
-        float: none;
-    }
-    .dropbtn{
-	 padding: 15px 12vw;
-    }
-    #logo{
-    	display: none;
-    }
-    div.page {margin-left: 0;}
-}
         </style>
     </head>
 
     <body>
         <div id="mySidenav" class="sidenav">
-            <a href="insite.iitmandi.ac.in"><img src="../public/img/iitmandilogo.png" height="150" width="230" style="margin-left: -15px;" /></a>
+            <a href="index.html"><img src="../public/img/images.png" height="150" width="230" style="margin-left: -15px;" /></a>
             <div class="Dropdown">
                 <button class="dropbtn">B.Tech Batch</button>
                 <div class="Dropdown-content">
@@ -266,16 +237,16 @@
                 <button class="dropbtn">Ph.D</button>
                 <div class="Dropdown-content">
                     <a href="phd.php">Ph.D</a>
-                    <a href="iphd.php">Int Ph.D</a>
+                    <a href="#">Int Ph.D</a>
                 </div>
             </div>
         </div>
         <div id="myPage" class="page">
             <h1>Indian Institute Of Technology Mandi</h1>
-            <h3>Contacts Directory</h3>
-            <input type="text" name="search" id="search" placeholder="Search Contact" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Contact'">
+            <h3>Contacts Directory - Int. PHD</h3>
+            <input type="text" name="search" id="searchiphd" placeholder="Search by Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search by Name'">
             <table>
-                <tr style="display: none" id="first">
+                <tr>
                     <th>Roll No.</th>
                     <th>Name</th>
                     <th>Branch</th>
@@ -284,9 +255,47 @@
                     <th>Personal Contact</th>
                     <th>Emergency Contact</th>
                 </tr>
+                <?php
+                  // connect to mongodb
+
+
+                try {
+
+                    $mng = new MongoDB\Driver\Manager("mongodb://localhost:27017");
+                    $options = [
+                        'sort' => ['roll' => 1],
+                    ];
+                    $query = new MongoDB\Driver\Query([],$options); 
+                    $rows = $mng->executeQuery("directory.iphd", $query);
+                    foreach ($rows as $row) {
+                    
+                        echo "<tr class='details'><td>$row->roll</td><td>$row->name</td><td>$row->branch</td><td>$row->hostel</td><td>$row->room</td><td>$row->number</td><td>$row->emergency</td>" . "</tr>";
+                    }
+                    
+                } catch (MongoDB\Driver\Exception\Exception $e) {
+
+                    $filename = basename(__FILE__);
+                    
+                    echo "The $filename script has experienced an error.\n"; 
+                    echo "It failed with the following exception:\n";
+                    
+                    echo "Exception:", $e->getMessage(), "\n";
+                    echo "In file:", $e->getFile(), "\n";
+                    echo "On line:", $e->getLine(), "\n";       
+                } 
+                ?><!--
+                <tr>
+                    <td>B16038</td>
+                    <td>Sylvia</td>
+                    <td>Computer Sceince and Engineering</td>
+                    <td>B4 Chandertaal</td>
+                    <td>001</td>
+                    <td>7807105329</td>
+                    <td>Mr. Rajiv Mittal</td>
+                    <td>9416220759</td>
+                </tr> -->
             </table>
         </div>
-
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
         <script type="text/javascript" src="../public/js/search.js"></script>
     </body>
