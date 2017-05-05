@@ -230,7 +230,7 @@
                 <div class="Dropdown-content">
                     <a href="ms.php">MS</a>
                     <a href="msc.php">M.Sc</a>
-                    <a href="#mtech.php>M.Tech</a>
+                    <a href="#mtech.php">M.Tech</a>
                 </div>
             </div>
             <div class="Dropdown">

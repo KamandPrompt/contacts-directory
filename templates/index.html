@@ -229,25 +229,25 @@
             <div class="Dropdown">
                 <button class="dropbtn">B.Tech Batch</button>
                 <div class="Dropdown-content">
-                    <a href="#">B.Tech 2016</a>
-                    <a href="#">B.Tech 2015</a>
-                    <a href="#">B.Tech 2014</a>
-                    <a href="#">B.Tech 2013</a>
+                    <a href="btech2016.php">B.Tech 2016</a>
+                    <a href="btech2015.php">B.Tech 2015</a>
+                    <a href="btech2014.php">B.Tech 2014</a>
+                    <a href="btech2013.php">B.Tech 2013</a>
                 </div>
             </div>
             <div class="Dropdown">
                 <button class="dropbtn">Post Graduate</button>
                 <div class="Dropdown-content">
-                    <a href="#">MS</a>
-                    <a href="#">M.Sc</a>
-                    <a href="#">M.Tech</a>
+                    <a href="ms.php">MS</a>
+                    <a href="msc.php">M.Sc</a>
+                    <a href="mtech.php">M.Tech</a>
                 </div>
             </div>
             <div class="Dropdown">
                 <button class="dropbtn">Ph.D</button>
                 <div class="Dropdown-content">
-                    <a href="#">Ph.D</a>
-                    <a href="#">Int Ph.D</a>
+                    <a href="phd.php">Ph.D</a>
+                    <a href="iphd.php">Int Ph.D</a>
                 </div>
             </div>
         </div>
@@ -256,28 +256,20 @@
             <h3>Contacts Directory</h3>
             <input type="text" name="search" id="search" placeholder="Search Contact" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Contact'">
             <table>
-                <tr>
+                <tr style="display: none" id="first">
                     <th>Roll No.</th>
                     <th>Name</th>
                     <th>Branch</th>
                     <th>Hostel</th>
                     <th>Room No.</th>
                     <th>Personal Contact</th>
-                    <th>Emergency Contact Name</th>
                     <th>Emergency Contact</th>
-                </tr>
-                <tr>
-                    <td>B16038</td>
-                    <td>Sylvia</td>
-                    <td>Computer Sceince and Engineering</td>
-                    <td>B4 Chandertaal</td>
-                    <td>001</td>
-                    <td>7807105329</td>
-                    <td>Mr. Rajiv Mittal</td>
-                    <td>9416220759</td>
                 </tr>
             </table>
         </div>
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="../public/js/search.js"></script>
     </body>
 
     </html>
