@@ -2,67 +2,164 @@
 
     $mng = new MongoDB\Driver\Manager("mongodb://localhost:27017");
     $str = $_GET["q"];
-    $regex = new MongoDB\BSON\Regex('' . $str, 'i');
-    $filter = [ 'name' => $regex ];
-    $query = new MongoDB\Driver\Query($filter);   
-    $rows = $mng->executeQuery("directory.btech2016", $query);
-    $response = "";
-    $response1 = "";
-    $count = 0;
-    foreach ($rows as $row) {
-        $count++;
-        $response = $response . "<li>$row->name : $row->roll : $row->branch : $row->hostel : $row->room" . "</li><br>";
-    }    
-    if($count>0){
-        $response = "Batch 2016: <br>" . $response;
-        $count = 0;
+    if($_GET["b"]=="btech2016"){
+        $regex = new MongoDB\BSON\Regex('' . $str, 'i');
+        if(preg_match("/^[a-zA-Z]{1}[0-9]+$/", $str))
+            $filter = [ 'roll' => $regex ];
+        else
+            $filter = [ 'name' => $regex ];
+        $query = new MongoDB\Driver\Query($filter);   
+        $rows = $mng->executeQuery("directory.btech2016", $query);
+        $response = "";
+        foreach ($rows as $row) {
+            $response = $response . "<tr class='details'><td>$row->roll</td><td>$row->name</td><td>$row->branch</td><td>$row->hostel</td><td>$row->room</td><td>$row->number</td><td>$row->emergency</td>" . "</tr>";
+        }
     }
-    $rows = $mng->executeQuery("directory.btech2015", $query);
-    foreach ($rows as $row) {
-        $count++;
-        $response1 = $response1 . "<li>$row->name : $row->roll : $row->branch : $row->hostel : $row->room" . "</li><br>";
+    else if($_GET["b"]=="btech2015"){
+        $regex = new MongoDB\BSON\Regex('' . $str, 'i');
+        if(preg_match("/^[a-zA-Z]{1}[0-9]+$/", $str))
+            $filter = [ 'roll' => $regex ];
+        else
+            $filter = [ 'name' => $regex ];
+        $query = new MongoDB\Driver\Query($filter);   
+        $rows = $mng->executeQuery("directory.btech2015", $query);
+        $response = "";
+        foreach ($rows as $row) {
+            $response = $response . "<tr class='details'><td>$row->roll</td><td>$row->name</td><td>$row->branch</td><td>$row->hostel</td><td>$row->room</td><td>$row->number</td><td>$row->emergency</td>" . "</tr>";
+        }
     }
-    if($count>0){
-        $response1 = "Batch 2015: <br>" . $response1;
-        $count = 0;
+    else if($_GET["b"]=="btech2014"){
+        $regex = new MongoDB\BSON\Regex('' . $str, 'i');
+        if(preg_match("/^[a-zA-Z]{1}[0-9]+$/", $str))
+            $filter = [ 'roll' => $regex ];
+        else
+            $filter = [ 'name' => $regex ];
+        $query = new MongoDB\Driver\Query($filter);   
+        $rows = $mng->executeQuery("directory.btech2014", $query);
+        $response = "";
+        foreach ($rows as $row) {
+            $response = $response . "<tr class='details'><td>$row->roll</td><td>$row->name</td><td>$row->branch</td><td>$row->hostel</td><td>$row->room</td><td>$row->number</td><td>$row->emergency</td>" . "</tr>";
+        }
     }
-    //get the q parameter from URL
-    
-// //lookup all links from the xml file if length of q>0
-// if (strlen($q)>0) {
-//   $hint="";
-//   for($i=0; $i<($x->length); $i++) {
-//     $y=$x->item($i)->getElementsByTagName('title');
-//     $z=$x->item($i)->getElementsByTagName('url');
-//     if ($y->item(0)->nodeType==1) {
-//       //find a link matching the search text
-//       if (stristr($y->item(0)->childNodes->item(0)->nodeValue,$q)) {
-//         if ($hint=="") {
-//           $hint="<a href='" . 
-//           $z->item(0)->childNodes->item(0)->nodeValue . 
-//           "' target='_blank'>" . 
-//           $y->item(0)->childNodes->item(0)->nodeValue . "</a>";
-//         } else {
-//           $hint=$hint . "<br /><a href='" . 
-//           $z->item(0)->childNodes->item(0)->nodeValue . 
-//           "' target='_blank'>" . 
-//           $y->item(0)->childNodes->item(0)->nodeValue . "</a>";
-//         }
-//       }
-//     }
-//   }
-// }''
+    else if($_GET["b"]=="btech2013"){
+        $regex = new MongoDB\BSON\Regex('' . $str, 'i');
+        if(preg_match("/^[a-zA-Z]{1}[0-9]+$/", $str))
+            $filter = [ 'roll' => $regex ];
+        else
+              $filter = [ 'name' => $regex ];
+        $query = new MongoDB\Driver\Query($filter);   
+        $rows = $mng->executeQuery("directory.btech2013", $query);
+        $response = "";
+        foreach ($rows as $row) {
+            $response = $response . "<tr class='details'><td>$row->roll</td><td>$row->name</td><td>$row->branch</td><td>$row->hostel</td><td>$row->room</td><td>$row->number</td><td>$row->emergency</td>" . "</tr>";
+        }
+    }
+    else if($_GET["b"]=="phd"){
+        $regex = new MongoDB\BSON\Regex('' . $str, 'i');
+        if(preg_match("/^[a-zA-Z]{1}[0-9]+$/", $str))
+            $filter = [ 'roll' => $regex ];
+        else
+            $filter = [ 'name' => $regex ];
+        $query = new MongoDB\Driver\Query($filter);   
+        $rows = $mng->executeQuery("directory.phd", $query);
+        $response = "";
+        foreach ($rows as $row) {
+            $response = $response . "<tr class='details'><td>$row->roll</td><td>$row->name</td><td>$row->branch</td><td>$row->hostel</td><td>$row->room</td><td>$row->number</td><td>$row->emergency</td>" . "</tr>";
+        }
+    }
+    else if($_GET["b"]=="ms"){
+        $regex = new MongoDB\BSON\Regex('' . $str, 'i');
+        if(preg_match("/^[a-zA-Z]{1}[0-9]+$/", $str))
+            $filter = [ 'roll' => $regex ];
+        else
+            $filter = [ 'name' => $regex ];
+        $query = new MongoDB\Driver\Query($filter);   
+        $rows = $mng->executeQuery("directory.ms", $query);
+        $response = "";
+        foreach ($rows as $row) {
+            $response = $response . "<tr class='details'><td>$row->roll</td><td>$row->name</td><td>$row->branch</td><td>$row->hostel</td><td>$row->room</td><td>$row->number</td><td>$row->emergency</td>" . "</tr>";
+        }
+    }
+    else if($_GET["b"]=="msc"){
+        $regex = new MongoDB\BSON\Regex('' . $str, 'i');
+        if(preg_match("/^[a-zA-Z]{1}[0-9]+$/", $str))
+            $filter = [ 'roll' => $regex ];
+        else
+            $filter = [ 'name' => $regex ];
+        $query = new MongoDB\Driver\Query($filter);   
+        $rows = $mng->executeQuery("directory.msc", $query);
+        $response = "";
+        foreach ($rows as $row) {
+            $response = $response . "<tr class='details'><td>$row->roll</td><td>$row->name</td><td>$row->branch</td><td>$row->hostel</td><td>$row->room</td><td>$row->number</td><td>$row->emergency</td>" . "</tr>";
+        }
+    }
+    else if($_GET["b"]=="mtech"){
+        $regex = new MongoDB\BSON\Regex('' . $str, 'i');
+        if(preg_match("/^[a-zA-Z]{1}[0-9]+$/", $str))
+            $filter = [ 'roll' => $regex ];
+        else
+            $filter = [ 'name' => $regex ];
+        $query = new MongoDB\Driver\Query($filter);   
+        $rows = $mng->executeQuery("directory.mtech", $query);
+        $response = "";
+        foreach ($rows as $row) {
+            $response = $response . "<tr class='details'><td>$row->roll</td><td>$row->name</td><td>$row->branch</td><td>$row->hostel</td><td>$row->room</td><td>$row->number</td><td>$row->emergency</td>" . "</tr>";
+        }
+    }
+    else if($_GET["b"]=="staff"){
+        $regex = new MongoDB\BSON\Regex('' . $str, 'i');
+        if(preg_match("/^[a-zA-Z]{1}[0-9]+$/", $str))
+            $filter = [ 'roll' => $regex ];
+        else
+            $filter = [ 'name' => $regex ];
+        $query = new MongoDB\Driver\Query($filter);   
+        $rows = $mng->executeQuery("directory.staff", $query);
+        $response = "";
+        foreach ($rows as $row) {
+            $response = $response . "<tr class='details'><td>$row->name</td><td>$row->designation</td><td>$row->office</td><td>$row->home</td><td>$row->other</td><td>$row->email</td><td>$row->address</td><td>$row->residence</td>" . "</tr>";
+        }
+    }
 
+    else{
+        $regex = new MongoDB\BSON\Regex('' . $str, 'i');
+        if(preg_match("/^[a-zA-Z]{1}[0-9]+$/", $str))
+            $filter = [ 'roll' => $regex ];
+        else
+            $filter = [ 'name' => $regex ];
+        $query = new MongoDB\Driver\Query($filter);   
+        $response = "";
+        $batch = 2013;
+        $i = 0;
+        while($i<4){
+            $search = "directory.btech" . $batch;
+            $rows = $mng->executeQuery($search, $query);
+            foreach ($rows as $row) {
+                $response = $response . "<tr class='details'><td>$row->roll</td><td>$row->name</td><td>$row->branch</td><td>$row->hostel</td><td>$row->room</td><td>$row->number</td><td>$row->emergency</td>" . "</tr>";
+            }
+            $i++;
+            $batch++;
+        }
+        $rows = $mng->executeQuery("directory.mtech", $query);
+        foreach ($rows as $row) {
+            $response = $response . "<tr class='details'><td>$row->roll</td><td>$row->name</td><td>$row->branch</td><td>$row->hostel</td><td>$row->room</td><td>$row->number</td><td>$row->emergency</td>" . "</tr>";
+        }
+        $rows = $mng->executeQuery("directory.msc", $query);
+        foreach ($rows as $row) {
+            $response = $response . "<tr class='details'><td>$row->roll</td><td>$row->name</td><td>$row->branch</td><td>$row->hostel</td><td>$row->room</td><td>$row->number</td><td>$row->emergency</td>" . "</tr>";
+        }
+        $rows = $mng->executeQuery("directory.ms", $query);
+        foreach ($rows as $row) {
+            $response = $response . "<tr class='details'><td>$row->roll</td><td>$row->name</td><td>$row->branch</td><td>$row->hostel</td><td>$row->room</td><td>$row->number</td><td>$row->emergency</td>" . "</tr>";
+        }
+        $rows = $mng->executeQuery("directory.phd", $query);
+        foreach ($rows as $row) {
+            $response = $response . "<tr class='details'><td>$row->roll</td><td>$row->name</td><td>$row->branch</td><td>$row->hostel</td><td>$row->room</td><td>$row->number</td><td>$row->emergency</td>" . "</tr>";
+        }
+        $rows = $mng->executeQuery("directory.iphd", $query);
+        foreach ($rows as $row) {
+            $response = $response . "<tr class='details'><td>$row->roll</td><td>$row->name</td><td>$row->branch</td><td>$row->hostel</td><td>$row->room</td><td>$row->number</td><td>$row->emergency</td>" . "</tr>";
+        }
 
-
-// Set output to "no suggestion" if no hint was found
-// or to the correct values
-// if ($hint=="") {
-//   $response="no suggestion";
-// } else {
-//   $response=$hint;
-// }
-
-// //output the response
-echo $response . $response1;
+    }
+echo $response;
 ?>

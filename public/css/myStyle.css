@@ -163,7 +163,7 @@
             font-size: 130%;
             background-color: #f3f3f3;
             color: black;
-            background-image: url('../public/img/searchicon1.png');
+            background-image: url('../img/searchicon1.png');
             background-size: 20% 70%;
             background-position: 5% 50%;
             background-repeat: no-repeat;
@@ -187,7 +187,7 @@
         
         th,
         td {
-            text-align: left;
+            text-align: center;
             padding: 20px 0;
         }
         

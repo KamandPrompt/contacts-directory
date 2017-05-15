@@ -4,7 +4,7 @@
         <title> Contacts - MS</title>
 <link rel = "stylesheet"
    type = "text/css"
-   href = "myStyle.css" />
+   href = "../public/css/myStyle.css" />
     </head>
 
     <body>
