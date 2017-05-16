@@ -108,10 +108,7 @@
     }
     else if($_GET["b"]=="staff"){
         $regex = new MongoDB\BSON\Regex('' . $str, 'i');
-        if(preg_match("/^[a-zA-Z]{1}[0-9]+$/", $str))
-            $filter = [ 'roll' => $regex ];
-        else
-            $filter = [ 'name' => $regex ];
+        $filter = [ 'name' => $regex ];
         $query = new MongoDB\Driver\Query($filter);   
         $rows = $mng->executeQuery("directory.staff", $query);
         $response = "";
@@ -160,6 +157,13 @@
             $response = $response . "<tr class='details'><td>$row->roll</td><td>$row->name</td><td>$row->branch</td><td>$row->hostel</td><td>$row->room</td><td>$row->number</td><td>$row->emergency</td>" . "</tr>";
         }
 
+        $response = $response . " | ";
+        $filter = [ 'name' => $regex ];
+        $query = new MongoDB\Driver\Query($filter);   
+        $rows = $mng->executeQuery("directory.staff", $query);
+        foreach ($rows as $row) {
+            $response = $response . "<tr class='details'><td>$row->name</td><td>$row->designation</td><td>$row->office</td><td>$row->home</td><td>$row->other</td><td>$row->email</td><td>$row->address</td><td>$row->residence</td>" . "</tr>";
+        }
     }
 echo $response;
 ?>
