@@ -176,6 +176,10 @@
         input[type=text]:focus {
             margin-left: 20%;
             width: 60%;
+            background-image: url('../img/searchicon1.png');
+            background-size: 10% 50%;
+            background-position: 5% 50%;
+            background-repeat: no-repeat;
         }
         
         table {
@@ -187,7 +191,7 @@
         
         th,
         td {
-            text-align: center;
+            text-align: left;
             padding: 20px 0;
         }
         
