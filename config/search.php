@@ -108,12 +108,27 @@
     }
     else if($_GET["b"]=="staff"){
         $regex = new MongoDB\BSON\Regex('' . $str, 'i');
-        $filter = [ 'name' => $regex ];
-        $query = new MongoDB\Driver\Query($filter);   
-        $rows = $mng->executeQuery("directory.staff", $query);
         $response = "";
-        foreach ($rows as $row) {
-            $response = $response . "<tr class='details'><td>$row->name</td><td>$row->designation</td><td>$row->office</td><td>$row->home</td><td>$row->other</td><td>$row->email</td><td>$row->address</td><td>$row->residence</td>" . "</tr>";
+        $temp= "";
+        $count = 0;
+        $query = new MongoDB\Driver\Command(['distinct' => 'staff', 'key' => 'department']); 
+        $cursor = $mng->executeCommand("directory", $query);
+        $cursor =  current($cursor->toArray())->values;
+        foreach ($cursor as $heading){
+           // echo '<tr class="details"><td colspan="8" style="padding: 0.5vw 5vw; font-weight: 800;">' . $heading. '</td></tr>';
+            $filter = [ 'name' => $regex, 'department' => $heading ];
+            $query = new MongoDB\Driver\Query($filter); 
+            $rows = $mng->executeQuery("directory.staff", $query);
+            foreach ($rows as $row) {
+                $temp = $temp .  "<tr class='details'><td>$row->name</td><td>$row->designation</td><td>$row->office</td><td>$row->home</td><td>$row->other</td><td>$row->email</td><td>$row->address</td><td>$row->residence</td>" . "</tr>";
+            	$count+=1;
+            }
+            if($count>0){
+            	$count = 0;
+            	$temp = '<tr class="details"><td colspan="8" style="padding: 0.5vw 5vw; font-weight: 800;">' . $heading. '</td></tr>' . $temp;
+            }
+            $response = $response . $temp;
+            $temp = '';
         }
     }
 
@@ -158,11 +173,26 @@
         }
 
         $response = $response . " | ";
-        $filter = [ 'name' => $regex ];
-        $query = new MongoDB\Driver\Query($filter);   
-        $rows = $mng->executeQuery("directory.staff", $query);
-        foreach ($rows as $row) {
-            $response = $response . "<tr class='details'><td>$row->name</td><td>$row->designation</td><td>$row->office</td><td>$row->home</td><td>$row->other</td><td>$row->email</td><td>$row->address</td><td>$row->residence</td>" . "</tr>";
+        $temp= "";
+        $count = 0;
+        $query = new MongoDB\Driver\Command(['distinct' => 'staff', 'key' => 'department']); 
+        $cursor = $mng->executeCommand("directory", $query);
+        $cursor =  current($cursor->toArray())->values;
+        foreach ($cursor as $heading){
+           // echo '<tr class="details"><td colspan="8" style="padding: 0.5vw 5vw; font-weight: 800;">' . $heading. '</td></tr>';
+            $filter = [ 'name' => $regex, 'department' => $heading ];
+            $query = new MongoDB\Driver\Query($filter); 
+            $rows = $mng->executeQuery("directory.staff", $query);
+            foreach ($rows as $row) {
+                $temp = $temp .  "<tr class='details'><td>$row->name</td><td>$row->designation</td><td>$row->office</td><td>$row->home</td><td>$row->other</td><td>$row->email</td><td>$row->address</td><td>$row->residence</td>" . "</tr>";
+            	$count+=1;
+            }
+            if($count>0){
+            	$count = 0;
+            	$temp = '<tr class="details"><td colspan="8" style="padding: 0.5vw 5vw; font-weight: 800;">' . $heading. '</td></tr>' . $temp;
+            }
+            $response = $response . $temp;
+            $temp = '';
         }
     }
 echo $response;

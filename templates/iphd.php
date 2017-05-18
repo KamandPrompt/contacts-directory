@@ -34,17 +34,13 @@
                     <a href="#">Int Ph.D</a>
                 </div>
             </div>
+            <div class="Dropdown">
+                <a id="fac" href="FacultyStaffDir.php"><button class="dropbtn">Faculty and Staff</a></button>
+                <div class="Dropdown-content">    
+                </div>
+            </div>
         </div>
         <div id="myPage" class="page">
-
-         <div class="fullscreen-bg">
-    <video loop muted autoplay poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/polina.jpg" class="fullscreen-bg__video">
- <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
-<source src="http://thenewcode.com/assets/videos/polina.webm" type="video/webm">
-<source src="http://thenewcode.com/assets/videos/polina.mp4" type="video/mp4">
-</video>
-    </video>
-</div>
             <h1 id="iit">Indian Institute Of Technology Mandi</h1>
             <h3>Contacts Directory - Int. PHD</h3>
             <input type="text" name="search" id="searchiphd" placeholder="Search by Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search by Name'">

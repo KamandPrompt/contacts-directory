@@ -34,16 +34,14 @@
                     <a href="iphd.php">Int Ph.D</a>
                 </div>
             </div>
+            <div class="Dropdown">
+                <a id="fac" href="#"><button class="dropbtn">Faculty and Staff</a></button>
+                <div class="Dropdown-content">
+                    
+                </div>
+            </div>
         </div>
         <div id="myPage" class="page">
-<!--        <div class="fullscreen-bg">
-    <video loop muted autoplay poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/polina.jpg" class="fullscreen-bg__video">
- <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
-<!--<source src="http://thenewcode.com/assets/videos/polina.webm" type="video/webm">
-<source src="http://thenewcode.com/assets/videos/polina.mp4" type="video/mp4">
-</video>
-    </video>
-</div>-->
 
             <h1 id="iitmandi">Indian Institute Of Technology Mandi</h1>
             <h1 id="iit">IIT Mandi</h1>
@@ -52,26 +50,20 @@
             <div style="overflow-x:auto">
             <table>
                 <tr>
-                    <th>Name</th>
-                    <th>Designation</th>
-                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-                    <th>Contact</th>
-                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-                    <th>Email</th>
-                    <th>Office</th>
-                    <th>Residence</th>
+                    <th rowspan="2">Name</th>
+                    <th rowspan="2">Designation</th>
+                    <th colspan="3"  style="text-align: center;">Contact</th>
+                    <th rowspan="2">Email</th>
+                    <th rowspan="2">Office</th>
+                    <th rowspan="2">Residence</th>
                 </tr>
-                <tr style="background-color: #111;">
-                    <td></td>
-                    <td></td>
-                    <td style="color: white; padding-top: 0 ">Office</td>
-                    <td style="color: white; padding-top: 0">Home</td>
-                    <td style="color: white; padding-top: 0">Other/Fax</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                <tr style="background-color: rgba(97, 104, 147, 0.7)">
+                    
+                    <th style="color: white;">Office</th>
+                    <th style="color: white;">Home</th>
+                    <th style="color: white;">Other/Fax</th>
                 </tr>
-
+               
                  <?php
                   // connect to mongodb
 
@@ -79,16 +71,18 @@
                 try {
 
                     $mng = new MongoDB\Driver\Manager("mongodb://localhost:27017");
-                    $options = [
-                        'sort' => ['roll' => 1],
-                    ];
-                    $query = new MongoDB\Driver\Query([],$options); 
-                    $rows = $mng->executeQuery("directory.staff", $query);
-                    foreach ($rows as $row) {
-                    
-                        echo "<tr class='details'><td>$row->name</td><td>$row->designation</td><td>$row->office</td><td>$row->home</td><td>$row->other</td><td>$row->email</td><td>$row->address</td><td>$row->residence</td>" . "</tr>";
+                    $query = new MongoDB\Driver\Command(['distinct' => 'staff', 'key' => 'department']); 
+                    $cursor = $mng->executeCommand("directory", $query);
+                    $cursor =  current($cursor->toArray())->values;
+                    foreach ($cursor as $heading){
+                        echo '<tr class="details"><td colspan="8" style="padding: 0.5vw 5vw; font-weight: 800;">' . $heading. '</td></tr>';
+                        $filter = [ 'department' => $heading ];
+                        $query = new MongoDB\Driver\Query($filter); 
+                        $rows = $mng->executeQuery("directory.staff", $query);
+                        foreach ($rows as $row) {
+                            echo "<tr class='details'><td>$row->name</td><td>$row->designation</td><td>$row->office</td><td>$row->home</td><td>$row->other</td><td>$row->email</td><td>$row->address</td><td>$row->residence</td>" . "</tr>";
+                        }
                     }
-                    
                 } catch (MongoDB\Driver\Exception\Exception $e) {
 
                     $filename = basename(__FILE__);
