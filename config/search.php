@@ -1,6 +1,6 @@
 <?php
 
-    $mng = new MongoDB\Driver\Manager("mongodb://localhost:27017");
+    $mng = new MongoDB\Driver\Manager("mongodb://root:root@ds149501.mlab.com:49501/directory");
     $str = $_GET["q"];
     if($_GET["b"]=="btech2016"){
         $regex = new MongoDB\BSON\Regex('' . $str, 'i');

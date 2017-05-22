@@ -61,7 +61,7 @@
 
                 try {
 
-                    $mng = new MongoDB\Driver\Manager("mongodb://localhost:27017");
+                    $mng = new MongoDB\Driver\Manager("mongodb://root:root@ds149501.mlab.com:49501/directory");
                     $options = [
                         'sort' => ['roll' => 1],
                     ];
