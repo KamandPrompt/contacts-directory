@@ -1,9 +1,13 @@
 {
     "require": {
-        "monolog/monolog": "1.0.*",
-        "ext-mongo": "*"
+        "mongodb/mongodb" : "^1.1"
     },
     "require-dev": {
     "heroku/heroku-buildpack-php": "*"
-  }
+  	},
+  	"config": {
+        "preferred-install": "dist",
+        "disable-tls": false,
+        "secure-http": false
+    }  
 }
